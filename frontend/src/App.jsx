@@ -19,7 +19,7 @@ import { ProtectedRoute, PublicRoute } from "./RouteProtectors.jsx"; // Assuming
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-axios.defaults.baseURL = "http://localhost:4000/";
+axios.defaults.baseURL = "https://ridepooling.onrender.com/";
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -27,7 +27,6 @@ function App() {
     <UserContextProvider>
       <ToastContainer />
       <Routes>
-
         <Route path="/" element={<Layout />}>
           <Route index element={<IndexPage />} />
           <Route element={<PublicRoute />}>
