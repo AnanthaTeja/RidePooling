@@ -368,7 +368,13 @@ app.post("/login", async (req, res) => {
         {},
         (err, token) => {
           if (err) throw err;
-          res.cookie("token", token).json(userDoc);
+          res.cookie("token", token, {
+            httpOnly: true, // Keeps the cookie inaccessible to client-side JavaScript for security
+            secure: process.env.NODE_ENV === "production", // Use `secure` in production for HTTPS
+            sameSite: "None", // Cross-site cookie (set to None if needed)
+            maxAge: 24 * 60 * 60 * 1000 // Cookie will expire in 24 hours
+          }).json(userDoc);
+          // res.cookie("token", token).json(userDoc);
         }
       );
     } else {
