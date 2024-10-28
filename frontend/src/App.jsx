@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { UserContextProvider, useAuth } from "./UserContext.jsx";
+import { UserContextProvider } from "./UserContext.jsx";
 import Layout from "./Layout.jsx";
 import IndexPage from "./pages/IndexPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
@@ -12,14 +12,13 @@ import ContactPage from "./pages/ContactPage.jsx";
 import AccountPage from "./pages/AccountPage.jsx";
 import SearchResults from "./pages/SearchResultsPage.jsx";
 import EditRide from "./pages/EditPage.jsx";
-import testPage from "./testPage.jsx";
 
 import axios from "axios";
-import { ProtectedRoute, PublicRoute } from "./RouteProtectors.jsx"; // Assuming you created this
+import { ProtectedRoute, PublicRoute } from "./RouteProtectors.jsx";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-axios.defaults.baseURL = "https://ridepooling.onrender.com/";
+axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 axios.defaults.withCredentials = true;
 
 function App() {
@@ -43,7 +42,7 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/contactus" element={<ContactPage />} />
         </Route>
-        <Route path="*" element={<Navigate to={"/"}></Navigate>} />
+        <Route path="*" element={<Navigate to={"/"} />} />
       </Routes>
     </UserContextProvider>
   );
