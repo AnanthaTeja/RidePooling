@@ -20,7 +20,7 @@ app.use(fileUpload());
 app.use(
   cors({
     // origin: "http://localhost:5173",
-    origin: ["http://localhost:5173", "https://ride-pooling.vercel.app/"],
+    origin: "https://ride-pooling.vercel.app/",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     credentials: true,
   })
